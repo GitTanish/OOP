@@ -3,12 +3,25 @@ class ATM:
     # in python class variables are created only in init
     # Constructor
     # construtor is a magic method
-    def __init__(self):
-        self.pin =""
-        self.balance = 0
-        self.menu()
+    # Instance variable
 
-    def menu(self):
+
+    def __init__(self):
+        self.__pin =""
+        self.__balance = 0
+        self.__menu()
+
+    def get_pin(self): # getter
+        return self.__pin
+
+    def set_pin(self, new_pin): # setter
+        if type(new_pin)=='str':
+            self.__pin = new_pin
+            print("Pin Changed")
+        else:
+            print('Not allowed')
+
+    def __menu(self):
         user_input = input("""
             Hello, how would you like to proceed?
             1. Enter 1 to create pin
@@ -30,14 +43,14 @@ class ATM:
             print("Bye")
 
     def create_pin(self):
-        self.pin = input('Enter your pin:')
-        print('Pin set successfully')
+        self.__pin = input('Enter your __pin:')
+        print('__pin set successfully')
 
     def deposit(self):
         temp = input('Enter your pin:')
-        if temp == self.pin:
+        if temp == self.__pin:
             amount= int(input("Enter your amount:"))
-            self.balance = self.balance+amount
+            self.__balance = self.__balance+amount
             print('Deposit Successful')
         else:
             print('Invalid pin')
@@ -45,19 +58,19 @@ class ATM:
     def withdraw(self):
 
         temp = input("Enter your pin:")
-        if temp == self.pin:
+        if temp == self.__pin:
             amount = int(input('Enter the amount:'))
-            if amount< self.balance:
-                self.balance = self.balance - amount
+            if amount< self.__balance:
+                self.__balance = self.__balance - amount
                 print('Operation successful')
             else:
                 print('Insufficient balance')
         else:
-            print('Invalid Pin')
+            print('Invalid pin')
 
     def check_balance(self):
         temp = input('Enter your pin:')
-        if temp == self.pin:
-            print(self.balance)
+        if temp == self.__pin:
+            print(self.__balance)
         else:
-            print('Invalid Pin')
+            print('Invalid pin')
