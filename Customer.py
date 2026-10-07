@@ -1,20 +1,20 @@
 # pass by reference
 class Customer:
-    def __init__(self, name, gender):
+    def __init__(self, name):
         self.name = name
-        self.gender = gender
+
 
 def greet(customer):
-    if customer.gender == 'Male' or customer.gender=='male' :
-        print('Hello', customer.name,'sir')
-    else:
-        print('Hello',customer.name,'mam')
+    # print(id(customer))
+    customer.name = "TySon"
+    print(customer.name)
+    print(id(customer))
 
-    cust2= Customer('Rajesh','male')
-
-    return cust2
-
-cust = Customer('Nilesh', 'Male')
+cust=Customer("D'amato")
 greet(cust)
-new_cust= greet(cust)
-print(new_cust.name)
+print(id(cust))
+# they'll have same ID since Reference
+
+# What will be the name?
+print(cust.name)
+# tip:- same reference

@@ -4,12 +4,25 @@ class ATM:
     # Constructor
     # construtor is a magic method
     # Instance variable
-
+    #
+    __counter =1 # class variable
 
     def __init__(self):
         self.__pin =""
         self.__balance = 0
-        self.__menu()
+        self.menu()
+        self.sno = ATM.__counter
+        ATM.__counter = ATM.__counter+1
+
+    def get_counter():
+        return ATM.__counter
+
+    def set_counter(new):
+        if type(new)==int:
+            ATM.__counter = new
+        else:
+            print('Not Allowed')
+
 
     def get_pin(self): # getter
         return self.__pin
@@ -21,7 +34,7 @@ class ATM:
         else:
             print('Not allowed')
 
-    def __menu(self):
+    def menu(self):
         user_input = input("""
             Hello, how would you like to proceed?
             1. Enter 1 to create pin
