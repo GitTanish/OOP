@@ -1,3 +1,4 @@
+# Single level
 class User:
 
     def login(self):
